@@ -1,22 +1,21 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import { TextField } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
+import { TextField, Button, Select, FormControl, MenuItem, InputLabel } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
   },
-  formControl: {
+  sortByForm: {
     margin: theme.spacing(1),
     minWidth: 120,
   },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
+  searchButton: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+    minHeight: 56,
+  }
 }));
 
 export default function CustomizedSelects() {
@@ -26,6 +25,9 @@ export default function CustomizedSelects() {
   const handleSortByChange = (event) => {
     setSortBy(event.target.value);
   };
+
+  const theme = useTheme();
+  const componentColor = theme.palette.type === 'dark' ? 'secondary' : 'primary';
 
   return (
     <div className={classes.root}>
@@ -48,7 +50,7 @@ export default function CustomizedSelects() {
       </FormControl>
 
       <FormControl
-        className={classes.formControl}
+        className={classes.sortByForm}
         variant="outlined"
       >
         <InputLabel id="sort-by-label">
@@ -58,7 +60,7 @@ export default function CustomizedSelects() {
         <Select
           id="sort-by"
           label="Sort by"
-          labelId="demo-simple-select-outlined-label"
+          labelId="sort-by-label"
           onChange={handleSortByChange}
           value={sortBy}
         >
@@ -67,6 +69,14 @@ export default function CustomizedSelects() {
           <MenuItem value={'help-wanted-issues'}>Help wanted issues</MenuItem>
         </Select>
       </FormControl>
+
+      <Button
+        className={classes.searchButton}
+        color={componentColor}
+        variant="outlined"
+      >
+        Search
+      </Button>
     </div>
   );
 }

@@ -10,7 +10,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import {
   orange,
-  deepOrange
 } from '@material-ui/core/colors';
 import { Brightness7, Brightness4, GitHub } from '@material-ui/icons';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -60,10 +59,10 @@ export default function Main() {
     palette: {
       type: palletType,
       primary: {
-        main: orange[500]
+        main: '#B11E58'
       },
       secondary: {
-        main: deepOrange[900]
+        main: orange[600]
       }
     }
   });
